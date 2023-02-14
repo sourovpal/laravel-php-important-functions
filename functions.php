@@ -77,6 +77,7 @@ class User extends Authenticatable
     }
 }
 
+return $this->hasMany('App\Models\Post', 'post_author', 'ID')->where('post_status', 'publish')->latest('App\Models\Post'::CREATED_AT);
 
 
 
