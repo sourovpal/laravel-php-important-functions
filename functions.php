@@ -36,3 +36,50 @@ public function getCoverAttribute()
 {
     return json_decode($this->InJson)->cover;
 }
+
+class User extends Authenticatable
+{
+    protected $dates = ['deleted_at'];
+    protected $table = 'users';
+
+    protected $appends =
+    [
+        'full_name',
+        'last_post',
+    ];
+
+    protected $fillable =
+    [
+        'username',
+        'first_name',
+        'last_name',
+    ];
+
+    protected $hidden =
+    [
+        'password',
+        'remember_token',
+    ];
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'user_id');
+    }
+
+    getFullNameAttribute()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    getLastPostAttribute()
+    {
+        return $this->posts()->last()
+    }
+}
+
+
+
+
+
+
+
