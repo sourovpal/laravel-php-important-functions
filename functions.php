@@ -27,3 +27,6 @@ $user->roles()->sync(array(1 => array('expires' => true)));
 
 $food = Food::find(1);
 $food->allergies()->sync([1 => ['severity' => 3], 4 => ['severity' => 1]]);
+
+return session()->get('url.intended');
+
