@@ -30,3 +30,9 @@ $food->allergies()->sync([1 => ['severity' => 3], 4 => ['severity' => 1]]);
 
 return session()->get('url.intended');
 
+protected $appends = ['cover'];
+//define accessor
+public function getCoverAttribute()
+{
+    return json_decode($this->InJson)->cover;
+}
