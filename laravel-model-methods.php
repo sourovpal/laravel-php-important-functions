@@ -106,6 +106,59 @@ DB::table('users')->where('votes', '>', 100)->dump();
 ->doesntExist();
 ->distinct()->get();
 
+DB::table('users')
+->joinSub($latestPosts, 'latest_posts', function ($join) {
+   $join->on('users.id', '=', 'latest_posts.user_id');
+})->get();
+
+->whereHas()
+->withWhereHas()
+->orWhereHas()
+->whereDoesntHave()
+->orWhereDoesntHave()
+->firstWhere()
+->firstWhere()
+->orWhere()
+->whereNot()
+->orWhereNot()
+->latest()
+->oldest()
+->find()
+->findMany()
+->findOrFail()
+->findOrNew()
+->findOr()
+->firstOrNew()
+->firstOrCreate()
+->createOrFirst()
+->updateOrCreate()
+->firstOrFail()
+->firstOr()
+->value()
+->soleValue()
+->valueOrFail()
+->get()
+->getModels()
+->getModels()
+->paginate()
+->simplePaginate()
+->create()
+->update()
+->touch()
+->delete()
+->forceDelete()
+->onDelete()
+->with()
+->without()
+->getQuery()
+->setQuery()
+->getModel()
+->setModel()
+->toArray()
+
+
+
+
 
 
 
