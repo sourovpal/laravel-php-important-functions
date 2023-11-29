@@ -155,6 +155,7 @@ DB::table('users')
 ->getModel()
 ->setModel()
 ->toArray()
+->toSql()
 
 
 
