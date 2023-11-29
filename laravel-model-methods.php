@@ -55,13 +55,56 @@ DB::table('users')
 ->inRandomOrder()
 ->groupBy('account_id')
 ->having('account_id', '>', 100)
-
-
-
-
-
-
-
+->skip(10)
+->take(5)
+->offset(10)
+->limit(5)
+->when($role, function ($query, $role) { 
+   return $query->where('role_id', $role); 
+});
+->when($sortBy, function ($query, $sortBy) {
+  return $query->orderBy($sortBy);
+}, function ($query) {
+  return $query->orderBy('name');
+})
+DB::table('users')->insert(
+    ['email' => 'john@example.com', 'votes' => 0]
+);
+DB::table('users')->insert([
+    ['email' => 'taylor@example.com', 'votes' => 0],
+    ['email' => 'dayle@example.com', 'votes' => 0]
+]);
+DB::table('users')->insertOrIgnore([
+    ['id' => 1, 'email' => 'taylor@example.com'],
+    ['id' => 2, 'email' => 'dayle@example.com']
+]);
+$id = DB::table('users')->insertGetId(
+    ['email' => 'john@example.com', 'votes' => 0]
+);
+DB::table('users')
+->where('id', 1)
+->update(['votes' => 1]);
+DB::table('users')
+ ->updateOrInsert(
+     ['email' => 'john@example.com', 'name' => 'John'],
+     ['votes' => '2']
+ );
+DB::table('users')->increment('votes');
+ 
+DB::table('users')->increment('votes', 5);
+ 
+DB::table('users')->decrement('votes');
+ 
+DB::table('users')->decrement('votes', 5);
+DB::table('users')->where('votes', '>', 100)->delete();
+DB::table('users')->where('votes', '>', 100)->dd(); 
+DB::table('users')->where('votes', '>', 100)->dump();
+->count();
+->max('price');
+->avg('price');
+->exists();
+->doesntExist();
+->distinct()->get();
 
 
 
