@@ -161,7 +161,7 @@ DB::table('users')
 ->toArray();
 ->save()
 ->insertGetId()
-
+->withSum()
 
 
 
