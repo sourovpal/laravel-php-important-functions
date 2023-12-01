@@ -157,9 +157,10 @@ DB::table('users')
 ->toArray()
 ->toSql()
 ->withCount()
-->has()
 ->unique()
 ->toArray();
+->save()
+->insertGetId()
 
 
 
