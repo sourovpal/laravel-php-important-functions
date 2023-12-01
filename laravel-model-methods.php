@@ -162,7 +162,9 @@ DB::table('users')
 ->save()
 ->insertGetId()
 ->withSum()
-
+->sync()
+->attach()
+->detach()
 
 
 
