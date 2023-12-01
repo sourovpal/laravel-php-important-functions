@@ -157,7 +157,7 @@ DB::table('users')
 ->toArray()
 ->toSql()
 ->withCount()
-
+->has()
 
 
 
