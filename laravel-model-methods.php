@@ -158,7 +158,8 @@ DB::table('users')
 ->toSql()
 ->withCount()
 ->has()
-
+->unique()
+->toArray();
 
 
 
