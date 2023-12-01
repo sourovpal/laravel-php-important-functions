@@ -156,6 +156,7 @@ DB::table('users')
 ->setModel()
 ->toArray()
 ->toSql()
+->withCount()
 
 
 
